@@ -4,6 +4,33 @@
 /* Helper Functions */
 
 
+
+function set_message($msg)
+{
+
+    if (!empty($msg)) {
+
+        $_SESSION['message'] = $msg;
+    } else {
+
+        $msg = "";
+    }
+}
+
+
+
+function display_message()
+{
+
+    if (isset($_SESSION['message'])) {
+
+        echo $_SESSION['message'];
+        unset($_SESSION['message']);
+    }
+}
+
+
+
 function redirect($location)
 {
 
@@ -89,6 +116,10 @@ DELIMETER;
 
 
 
+
+
+
+
 function get_categories()
 {
 
@@ -129,7 +160,7 @@ function get_products_in_cat_page()
 
         <div class="col-md-3 col-sm-6 hero-feature">
             <div class="thumbnail">
-                <img src="{$row['product_image']}" alt="">
+            <a href="item.php?id={$row['product_id']}"><img src="{$row['product_image']}" alt=""></a>
                 <div class="caption">
                     <h3>{$row['product_title']}</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
@@ -165,7 +196,7 @@ function get_products_in_shop_page()
 
         <div class="col-md-3 col-sm-6 hero-feature">
             <div class="thumbnail">
-                <img src="{$row['product_image']}" alt="">
+            <a href="item.php?id={$row['product_id']}"><img src="{$row['product_image']}" alt=""></a>
                 <div class="caption">
                     <h3>{$row['product_title']}</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
@@ -183,6 +214,67 @@ DELIMETER;
 }
 
 
+
+
+
+
+
+function login_user()
+{
+
+
+    if (isset($_POST['submit'])) {
+
+
+        $username = escape_string($_POST['username']);
+        $password = escape_string($_POST['password']);
+
+        $query = query("SELECT * FROM users WHERE username = '{$username}' AND password = '{$password}' ");
+        confirm($query);
+
+
+        if (mysqli_num_rows($query) == 0) {
+
+            set_message("Your Username or Password is wrong !");
+            redirect("login.php");
+        } else {
+            set_message("Welcome '{$username}' !");
+            redirect("admin");
+        }
+    }
+}
+
+
+
+
+
+
+function send_message()
+{
+
+    if (isset($_POST['submit'])) {
+
+        $to        = "someexample@gmail.com";
+        $from_name = $_POST['name'];
+        $email     = $_POST['email'];
+        $subject   = $_POST['subject'];
+        $message   = $_POST['message'];
+
+        $headers = "From: {$from_name} {$email} ";
+
+        $result = mail($to, $subject, $message, $headers);
+
+        if (!$result) {
+
+            set_message("Sorry , we could not send your message !");
+            redirect("contact.php");
+        } else {
+
+            set_message("Yes , your message has been sent !");
+            redirect("contact.php");
+        }
+    }
+}
 
 
 
