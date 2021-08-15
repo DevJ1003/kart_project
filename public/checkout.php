@@ -1,6 +1,13 @@
 <?php require_once("../resources/config.php");
 
 include "../resources/templates/front/header.php";
+include "cart.php";
+
+
+if (isset($_SESSION['product_1'])) {
+
+    echo $_SESSION['product_1'];
+}
 
 
 ?>
@@ -13,6 +20,7 @@ include "../resources/templates/front/header.php";
 
     <div class="row">
 
+        <h4 class="text-center bg-danger"><?php echo display_message(); ?></h4>
         <h1>Checkout</h1>
 
         <form action="">
@@ -27,13 +35,7 @@ include "../resources/templates/front/header.php";
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>apple</td>
-                        <td>$23</td>
-                        <td>3</td>
-                        <td>2</td>
-
-                    </tr>
+                    <?php cart(); ?>
                 </tbody>
             </table>
         </form>
