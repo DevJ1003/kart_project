@@ -174,7 +174,7 @@ function report()
                     $id = substr($name, 8, $length);
 
 
-                    $send_order = query("INSERT INTO orders (order_amount , order_transaction , order_status , order_currency) VALUES('{$amount}' , '{$currency}' , '{$transaction}' , '{$status}')");
+                    $send_order = query("INSERT INTO orders (order_amount , order_transaction , order_status , order_currency) VALUES('{$amount}' , '{$transaction}' , '{$status}' , '{$currency}')");
                     $last_id = last_id();
                     confirm($send_order);
 

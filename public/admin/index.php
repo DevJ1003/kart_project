@@ -16,16 +16,6 @@ if (!isset($_SESSION['username'])) {
 
     <div class="container-fluid">
 
-        <!-- Page Heading -->
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header">
-                    Dashboard <small>Statistics Overview</small>
-                </h1>
-            </div>
-        </div>
-        <!-- /.row -->
-
 
         <?php
 
@@ -48,6 +38,12 @@ if (!isset($_SESSION['username'])) {
         if (isset($_GET['add_product'])) {
 
             include "../../resources/templates/back/add_product.php";
+        }
+
+
+        if (isset($_GET['edit_product'])) {
+
+            include "../../resources/templates/back/edit_product.php";
         }
 
 

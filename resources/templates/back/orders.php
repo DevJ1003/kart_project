@@ -11,6 +11,7 @@ include "../../resources/templates/back/header.php";
     <h1 class="page-header">
         All Orders
     </h1>
+    <h4 class="text-center bg-success"><?php display_message(); ?></h4>
 
     <table class="table table-hover">
         <thead>
@@ -20,6 +21,7 @@ include "../../resources/templates/back/header.php";
                 <th>Transaction</th>
                 <th>Currency</th>
                 <th>Status</th>
+                <th>Delete</th>
             </tr>
         </thead>
         <tbody>

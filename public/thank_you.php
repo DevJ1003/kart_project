@@ -2,7 +2,7 @@
 
 include "../resources/templates/front/header.php";
 
-report();
+// report();
 
 ?>
 

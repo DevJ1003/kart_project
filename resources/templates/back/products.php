@@ -11,6 +11,8 @@ include "../../resources/templates/back/header.php";
     <h1 class="page-header">
         All Products
     </h1>
+    <h4 class="text-center bg-success"><?php display_message(); ?></h4>
+
     <table class="table table-hover">
         <thead>
             <tr>
@@ -18,17 +20,12 @@ include "../../resources/templates/back/header.php";
                 <th>Title</th>
                 <th>Category</th>
                 <th>Price</th>
+                <th>Quantity</th>
+                <th>Delete</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>20</td>
-                <td>Nikon 234 <br>
-                    <img src="http://placehold.it/62x62" alt="">
-                </td>
-                <td>Category</td>
-                <td>123</td>
-            </tr>
+            <?php get_products_in_admin(); ?>
         </tbody>
     </table>
 

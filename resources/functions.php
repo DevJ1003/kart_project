@@ -310,10 +310,70 @@ function display_orders()
     <td>{$row['order_transaction']}</td>
     <td>{$row['order_currency']}</td>
     <td>{$row['order_status']}</td>
+    <td><a class="btn btn-danger" href="../../resources/templates/back/delete_order.php?id={$row['order_id']}"><span class="glyphicon glyphicon-remove"></span></a></td>
 </tr>
 
 DELIMETER;
 
         echo $orders;
+    }
+}
+
+
+
+
+
+
+
+/************************************* ADMIN FUNCTIONS *******************************************/
+
+
+function get_products_in_admin()
+{
+
+    $query = query("SELECT * FROM products");
+    confirm($query);
+
+    while ($row = fetch_array($query)) {
+
+        $product = <<<DELIMETER
+
+<tr>
+    <td>{$row['product_id']}</td>
+    <td>{$row['product_title']}<br>
+    <a href="index.php?edit_product&id={$row['product_id']}"><img src="{$row['product_image']}" alt=""></a>
+    </td>
+    <td>Category</td>
+    <td>{$row['product_price']}</td>
+    <td>{$row['product_quantity']}</td>
+    <td><a class="btn btn-danger" href="../../resources/templates/back/delete_product.php?id={$row['product_id']}"><span class="glyphicon glyphicon-remove"></span></a></td>
+</tr>
+    
+DELIMETER;
+
+        echo $product;
+    }
+}
+
+
+
+
+
+/****************************** ADD PRODUCTS IN ADMIN **********************************/
+
+
+function add_products()
+{
+
+    if (isset($_POST['publish'])) {
+
+        $product_title       = escape_string($_POST['product_title']);
+        $product_category_id = escape_string($_POST['product_category_id']);
+        $product_price       = escape_string($_POST['product_price']);
+        $product_description = escape_string($_POST['product_description']);
+        $short_desc          = escape_string($_POST['short_desc']);
+        $product_quantity    = escape_string($_POST['product_quantity']);
+        $product_image       = escape_string($_FILES['file']['name']);
+        $image_temp_location = escape_string($_FILES['file']['tmp_name']);
     }
 }
