@@ -1,16 +1,6 @@
 <?php require_once("../resources/config.php");
 
 include "../resources/templates/front/header.php";
-include "cart.php";
-
-
-// if (isset($_SESSION['product_1'])) {
-
-//     echo $_SESSION['product_1'];
-
-//     echo $_SESSION['item_total'];
-// }
-
 
 ?>
 

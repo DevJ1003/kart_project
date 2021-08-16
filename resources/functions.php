@@ -4,6 +4,13 @@
 /* Helper Functions */
 
 
+function last_id()
+{
+    global $connection;
+    return mysqli_insert_id($connection);
+}
+
+
 
 function set_message($msg)
 {
@@ -103,7 +110,7 @@ function get_products()
                 <h4><a href="item.php?id={$row['product_id']}">{$row['product_title']}</a>
                 </h4>
                 <p>See more snippets like this online store item at <a target="_blank" href="http://www.bootsnipp.com">Bootsnipp - http://bootsnipp.com</a>.</p>
-                <a class="btn btn-primary" target="_blank" href="cart.php?add={$row['product_id']}">Add to Cart</a>
+                <a class="btn btn-primary" target="_blank" href="../resources/cart.php?add={$row['product_id']}">Add to Cart</a>
             </div>
         </div>
         </div>
@@ -238,7 +245,7 @@ function login_user()
             set_message("Your Username or Password is wrong !");
             redirect("login.php");
         } else {
-            set_message("Welcome '{$username}' !");
+            $_SESSION['username'] = $username;
             redirect("admin");
         }
     }
@@ -283,3 +290,30 @@ function send_message()
 
 
 /************************************ BACK END FUNCTIONS *************************************/
+
+
+
+
+function display_orders()
+{
+
+    $query = query("SELECT * FROM orders");
+    confirm($query);
+
+    while ($row = fetch_array($query)) {
+
+        $orders = <<<DELIMETER
+
+<tr>
+    <td>{$row['order_id']}</td>
+    <td>{$row['order_amount']}</td>
+    <td>{$row['order_transaction']}</td>
+    <td>{$row['order_currency']}</td>
+    <td>{$row['order_status']}</td>
+</tr>
+
+DELIMETER;
+
+        echo $orders;
+    }
+}
