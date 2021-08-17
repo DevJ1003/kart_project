@@ -29,7 +29,7 @@ include "../resources/templates/front/header.php";
             <div class="row">
 
                 <div class="col-md-7">
-                    <img class="img-responsive" src="<?php echo $row['product_image']; ?>" alt="">
+                    <img class="img-responsive" src="../resources/<?php echo display_image($row['product_image']); ?>" alt="">
 
                 </div>
 
@@ -43,20 +43,7 @@ include "../resources/templates/front/header.php";
                             <hr>
                             <h4 class=""><?php echo "&#8377;" . $row['product_price']; ?></h4>
 
-                            <div class="ratings">
-
-                                <p>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star-empty"></span>
-                                    4.0 stars
-                                </p>
-                            </div>
-
                             <p><?php echo $row['short_desc']; ?></p>
-
 
                             <form action="">
                                 <div class="form-group">
@@ -65,46 +52,33 @@ include "../resources/templates/front/header.php";
                             </form>
 
                         </div>
-
                     </div>
-
                 </div>
-
 
             </div>
             <!--Row For Image and Short Description-->
 
-
             <hr>
 
-
             <!--Row for Tab Panel-->
-
             <div class="row">
-
                 <div role="tabpanel">
 
                     <!-- Nav tabs -->
                     <ul class="nav nav-tabs" role="tablist">
                         <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Description</a></li>
                         <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Reviews</a></li>
-
                     </ul>
 
                     <!-- Tab panes -->
                     <div class="tab-content">
                         <div role="tabpanel" class="tab-pane active" id="home">
-
                             <p></p>
-
                             <p><?php echo $row['product_description']; ?></p>
-
-
                         </div>
                         <div role="tabpanel" class="tab-pane" id="profile">
 
                             <div class="col-md-6">
-
                                 <h3>2 Reviews From </h3>
 
                                 <hr>

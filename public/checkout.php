@@ -28,7 +28,7 @@ include "../resources/templates/front/header.php";
                         <th>Price</th>
                         <th>Quantity</th>
                         <th>Sub-total</th>
-
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -45,7 +45,7 @@ include "../resources/templates/front/header.php";
         <!--  ***********CART TOTALS*************-->
 
         <div class="col-xs-4 pull-right ">
-            <h2>Cart Totals</h2>
+            <h2>Cart Totals :</h2>
 
             <table class="table table-bordered" cellspacing="0">
 
@@ -56,12 +56,12 @@ include "../resources/templates/front/header.php";
                                                 ?></span></td>
                 </tr>
                 <tr class="shipping">
-                    <th>Shipping and Handling</th>
+                    <th>Shipping and Handling :</th>
                     <td>Free Shipping</td>
                 </tr>
 
                 <tr class="order-total">
-                    <th>Order Total</th>
+                    <th>Order Total :</th>
                     <td><strong><span class="amount">&#8377;<?php
                                                             echo isset($_SESSION['item_total']) ? $_SESSION['item_total'] : $_SESSION['item_total'] = "0";
                                                             ?>
