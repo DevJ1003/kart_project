@@ -29,6 +29,11 @@ if (!isset($_SESSION['username'])) {
             include "../../resources/templates/back/orders.php";
         }
 
+        if (isset($_GET['reports'])) {
+
+            include "../../resources/templates/back/reports.php";
+        }
+
         if (isset($_GET['products'])) {
 
             include "../../resources/templates/back/products.php";
@@ -56,6 +61,12 @@ if (!isset($_SESSION['username'])) {
         if (isset($_GET['users'])) {
 
             include "../../resources/templates/back/users.php";
+        }
+
+
+        if (isset($_GET['add_user'])) {
+
+            include "../../resources/templates/back/add_user.php";
         }
 
         ?>

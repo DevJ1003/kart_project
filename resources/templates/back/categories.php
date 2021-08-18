@@ -10,17 +10,20 @@ include "../../resources/templates/back/header.php";
     <h1 class="page-header">
         Product Categories
     </h1>
+    <h4 class="text-center bg-success"><?php display_message(); ?></h4>
 
     <div class="col-md-4">
         <form action="" method="post">
 
+            <?php add_category(); ?>
+
             <div class="form-group">
                 <label for="category-title">Title</label>
-                <input type="text" class="form-control">
+                <input name="cat_title" type="text" class="form-control">
             </div>
 
             <div class="form-group">
-                <input type="submit" class="btn btn-primary" value="Add Category">
+                <input name="add_category" type="submit" class="btn btn-primary" value="Add Category">
             </div>
 
         </form>
@@ -30,16 +33,14 @@ include "../../resources/templates/back/header.php";
         <table class="table">
             <thead>
                 <tr>
-                    <th>id</th>
+                    <th>ID</th>
                     <th>Title</th>
+                    <th>Delete</th>
                 </tr>
             </thead>
 
             <tbody>
-                <tr>
-                    <td>20</td>
-                    <td>Example Title</td>
-                </tr>
+                <?php show_categories_in_admin(); ?>
             </tbody>
 
         </table>

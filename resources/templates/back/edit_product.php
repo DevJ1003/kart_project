@@ -9,7 +9,6 @@ if (isset($_GET['id'])) {
     confirm($query);
 
     while ($row = fetch_array($query)) {
-
         $product_title       = escape_string($row['product_title']);
         $product_category_id = escape_string($row['product_category_id']);
         $product_price       = escape_string($row['product_price']);
@@ -21,6 +20,8 @@ if (isset($_GET['id'])) {
         $product_image = display_image($row['product_image']);
     }
 
+    // var_dump($_POST);
+    // die();
     update_products();
 }
 
@@ -63,9 +64,11 @@ if (isset($_GET['id'])) {
             <!-- Product Categories-->
             <div class="form-group">
                 <label for="product-title">Product Category</label>
-                <select name="product_category" id="" class="form-control">
-                    <option value="<?php echo $product_category_id; ?>"><?php echo show_product_category_title($product_category_id); ?></option>
-                    <?php get_categories_add_product_page(); ?>
+                <select name="product_category_id" id="" class="form-control">
+                    <option value="<?php echo $product_category_id; ?>"><?php echo show_product_category_title($product_category_id);
+                                                                        ?></option>
+                    <?php get_categories_add_product_page();
+                    ?>
                 </select>
             </div>
 

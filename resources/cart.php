@@ -25,7 +25,7 @@ if (isset($_GET['add'])) {
 
 if (isset($_GET['remove'])) {
 
-    $_SESSION['product_' . $_GET['remove']]--;
+    $_SESSION['product_' . $_GET['remove']];
 
     if ($_SESSION['product_' . $_GET['remove']] < 1) {
 

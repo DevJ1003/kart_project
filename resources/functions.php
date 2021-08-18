@@ -440,12 +440,19 @@ function get_categories_add_product_page()
 
 
     while ($row = fetch_array($query)) {
+        // if ($row['cat_id'] == $product_category_id) {
+        //     <option value="{$row['cat_id']}" selected>{$row['cat_title']}</option>   
 
+        // }else{
+        //     <option value="{$row['cat_id']}">{$row['cat_title']}</option>   
+
+        // }
         $categories_options = <<<DELIMETER
 
-<option value="{$row['cat_id']}">{$row['cat_title']}</option>   
+            
+            <option value="{$row['cat_id']}">{$row['cat_title']}</option>   
 
-DELIMETER;
+        DELIMETER;
 
         echo $categories_options;
     }
@@ -475,7 +482,6 @@ function update_products()
         $image_temp_location = escape_string($_FILES['file']['tmp_name']);
 
 
-
         if (empty($product_image)) {
 
             $get_pic = query("SELECT product_image FROM products WHERE product_id =" . escape_string($_GET['id']) . "");
@@ -502,11 +508,187 @@ function update_products()
         $query .= "WHERE product_id=" . escape_string($_GET['id']);
 
 
-        var_dump($product_category_id);
-        // die();
         $send_update_query = query($query);
         confirm($send_update_query);
         set_message("Product has been updated!");
         redirect("index.php?products");
+    }
+}
+
+
+
+
+
+/***************************************** CATEGORIES IN ADMIN ***************************************/
+
+
+
+function show_categories_in_admin()
+{
+
+    $query = query("SELECT * FROM categories");
+    confirm($query);
+
+
+    while ($row = fetch_array($query)) {
+
+
+        $cat_id = $row['cat_id'];
+        $cat_title = $row['cat_title'];
+
+        $category = <<<DELIMETER
+
+            <tr>
+                <td>{$cat_id}</td>  
+                <td>{$cat_title}</td>
+                <td>
+                    <a class="btn btn-danger" href="../../resources/templates/back/delete_category.php?id={$row['cat_id']}"><span class="glyphicon glyphicon-remove"></span></a>
+                </td>
+            </tr>
+
+DELIMETER;
+
+        echo $category;
+    }
+}
+
+
+
+
+function add_category()
+{
+
+    if (isset($_POST['add_category'])) {
+
+        $cat_title = escape_string($_POST['cat_title']);
+
+
+        if (empty($cat_title) || $cat_title == " ") {
+
+            set_message("This Field cannot be empty !");
+        } else {
+
+            $query = query("INSERT INTO categories(cat_title) VALUES('{$cat_title}') ");
+            confirm($query);
+
+            set_message("Category created !");
+        }
+
+        redirect("index.php?categories");
+    }
+}
+
+
+
+
+
+/**************************************** USER ADMIN  ***************************************/
+
+
+
+function display_user()
+{
+
+    $query = query("SELECT * FROM users");
+    confirm($query);
+
+
+    while ($row = fetch_array($query)) {
+
+        $user_id = $row['user_id'];
+        $username = $row['username'];
+        $firstname = $row['firstname'];
+        $lastname = $row['lastname'];
+        $email = $row['email'];
+
+        $user_image = display_image($row['user_image']);
+
+        $admin_user = <<<DELIMETER
+
+        <tr>
+        <td>{$user_id}</td>
+        <td>{$username}<br>
+        <a><img width="150" src="../../resources/{$user_image}" alt=""></a>
+        </td>
+        <td>{$firstname}</td>
+        <td>{$lastname}</td>
+        <td>{$email}</td>
+        <td>
+        <a class="btn btn-danger" href="../../resources/templates/back/delete_user.php?id={$row['user_id']}"><span class="glyphicon glyphicon-remove"></span></a>
+        </td>
+    </tr>
+
+DELIMETER;
+
+        echo $admin_user;
+    }
+}
+
+
+
+
+function add_user()
+{
+
+    if (isset($_POST['add_user'])) {
+
+        $username = escape_string($_POST['username']);
+        $firstname = escape_string($_POST['firstname']);
+        $lastname = escape_string($_POST['lastname']);
+        $email = escape_string($_POST['email']);
+        $password = escape_string($_POST['password']);
+        $user_image       = escape_string($_FILES['file']['name']);
+        $image_temp_location = escape_string($_FILES['file']['tmp_name']);
+
+        move_uploaded_file($image_temp_location, UPLOAD_DIRECTORY . DS . $user_image);
+
+
+        $query = query("INSERT INTO users(username , firstname , lastname , email , user_image , password) VALUES('{$username}' , '{$firstname}' , '{$lastname}' , '{$email}' , '{$user_image}' , '{$password}') ");
+        confirm($query);
+
+        set_message("User created !");
+        redirect("index.php?users");
+    }
+}
+
+
+
+
+
+/************************************ REPORTS - ADMIN  *******************************/
+
+
+
+function get_report()
+{
+
+    $query = query("SELECT * FROM reports");
+    confirm($query);
+
+    while ($row = fetch_array($query)) {
+
+
+        $report_id = $row['report_id'];
+        $product_id = $row['product_id'];
+        $product_title = $row['product_title'];
+        $order_id = $row['order_id'];
+        $product_price = $row['product_price'];
+        $product_quantity = $row['product_quantity'];
+
+        $report = <<<DELIMETER
+
+<tr>
+    <td>{$row['report_id']}</td>
+    <td>{$row['product_id']}</td>
+    <td>{$row['product_title']}</td>
+    <td>{$row['order_id']}</td>
+    <td>{$row['product_price']}</td>
+    <td>{$row['product_quantity']}</td>
+    <td><a class="btn btn-danger" href="../../resources/templates/back/delete_report.php?id={$row['report_id']}"><span class="glyphicon glyphicon-remove"></span></a></td>
+</tr>
+    
+DELIMETER;
+
+        echo $report;
     }
 }
