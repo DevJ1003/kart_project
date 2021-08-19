@@ -73,7 +73,7 @@ function cart()
 
             if (substr($name, 0, 8) == "product_") {
 
-                $length = strlen($name) - 8;
+                $length = strlen($name);
 
                 $id = substr($name, 8, $length);
 
@@ -198,7 +198,7 @@ function report()
                     }
 
                     $total += $sub;
-                    echo $item_quantity;
+                    $item_quantity;
                 }
             }
         }

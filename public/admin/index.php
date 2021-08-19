@@ -69,6 +69,11 @@ if (!isset($_SESSION['username'])) {
             include "../../resources/templates/back/add_user.php";
         }
 
+        if (isset($_GET['slides'])) {
+
+            include "../../resources/templates/back/slides.php";
+        }
+
         ?>
 
 

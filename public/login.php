@@ -29,8 +29,6 @@ include "../resources/templates/front/header.php";
                 </div>
             </form>
         </div>
-
-
     </header>
 </div>
 

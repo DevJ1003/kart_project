@@ -97,7 +97,7 @@ function fetch_array($result)
 function get_products()
 {
 
-    $query = query("SELECT * FROM products");
+    $query = query("SELECT * FROM products WHERE product_quantity >= 1");
     confirm($query);
     while ($row = fetch_array($query)) {
 
@@ -106,7 +106,7 @@ function get_products()
 
         <div class="col-sm-4 col-lg-4 col-md-4">
         <div class="thumbnail">
-            <a href="item.php?id={$row['product_id']}"><img src="../resources/{$product_image}" alt=""></a>
+            <a href="item.php?id={$row['product_id']}"><img style="height:120px;" src="../resources/{$product_image}" alt=""></a>
             <div class="caption">
                 <h4 class="pull-right">&#8377;{$row['product_price']}</h4>
                 <h4><a href="item.php?id={$row['product_id']}">{$row['product_title']}</a>
@@ -159,7 +159,7 @@ DELIMETER;
 function get_products_in_cat_page()
 {
 
-    $query = query("SELECT * FROM products WHERE product_category_id = " . escape_string($_GET['id']) . "");
+    $query = query("SELECT * FROM products WHERE product_category_id = " . escape_string($_GET['id']) . " AND product_quantity >= 1 ");
     confirm($query);
 
     while ($row = fetch_array($query)) {
@@ -169,7 +169,7 @@ function get_products_in_cat_page()
 
         <div class="col-md-3 col-sm-6 hero-feature">
             <div class="thumbnail">
-            <a href="item.php?id={$row['product_id']}"><img src="../resources/{$product_image}" alt=""></a>
+            <a href="item.php?id={$row['product_id']}"><img style="height:120px;" src="../resources/{$product_image}" alt=""></a>
                 <div class="caption">
                     <h3>{$row['product_title']}</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
@@ -196,7 +196,7 @@ DELIMETER;
 function get_products_in_shop_page()
 {
 
-    $query = query("SELECT * FROM products");
+    $query = query("SELECT * FROM products WHERE product_quantity >= 1");
     confirm($query);
 
     while ($row = fetch_array($query)) {
@@ -206,7 +206,7 @@ function get_products_in_shop_page()
 
         <div class="col-md-3 col-sm-6 hero-feature">
             <div class="thumbnail">
-            <a href="item.php?id={$row['product_id']}"><img src="../resources/{$product_image}" alt=""></a>
+            <a href="item.php?id={$row['product_id']}"><img style="height:120px;" src="../resources/{$product_image}" alt=""></a>
                 <div class="caption">
                     <h3>{$row['product_title']}</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
@@ -667,7 +667,6 @@ function get_report()
 
     while ($row = fetch_array($query)) {
 
-
         $report_id = $row['report_id'];
         $product_id = $row['product_id'];
         $product_title = $row['product_title'];
@@ -690,5 +689,191 @@ function get_report()
 DELIMETER;
 
         echo $report;
+    }
+}
+
+
+
+
+
+
+/************************************* SLIDER FUNCTIONS **********************************/
+
+
+
+
+function add_slides()
+{
+
+    if (isset($_POST['add_slide'])) {
+
+        $slide_title = escape_string($_POST['slide_title']);
+        $slide_image       = escape_string($_FILES['file']['name']);
+        $slide_image_temp_location = escape_string($_FILES['file']['tmp_name']);
+
+
+        if (empty($slide_title) || empty($slide_image)) {
+
+            set_message("Fields cannot be empty !");
+        } else {
+
+            move_uploaded_file($slide_image_temp_location, UPLOAD_DIRECTORY . DS . $slide_image);
+
+            $query = query("INSERT INTO slides( slide_title , slide_image ) VALUES( '{$slide_title}' , '{$slide_image}' )");
+            confirm($query);
+
+            set_message("New Slide banner added !");
+            redirect("index.php?slides");
+        }
+    }
+}
+
+
+
+
+
+function get_current_slide_in_admin()
+{
+
+    $query = query("SELECT * FROM slides ORDER BY slide_id DESC LIMIT 1");
+    confirm($query);
+
+    while ($row = fetch_array($query)) {
+
+        $slide_image = display_image($row['slide_image']);
+
+        $slide_active_admin = <<<DELIMETER
+
+       
+            <img style="height:400px;"  class="img-responsive" src="../../resources/{$slide_image}" alt="">
+      
+
+        DELIMETER;
+
+        echo $slide_active_admin;
+    }
+}
+
+
+
+
+
+function get_slides()
+{
+
+    $query = query("SELECT * FROM slides LIMIT 2");
+    confirm($query);
+
+    while ($row = fetch_array($query)) {
+
+        $slide_image = display_image($row['slide_image']);
+
+        $slides = <<<DELIMETER
+
+        <div class="item">
+            <img style="height:400px;" class="slide-image" src="../resources/{$slide_image}" alt="">
+        </div>
+
+        DELIMETER;
+
+        echo $slides;
+    }
+}
+
+
+
+
+
+
+
+
+function get_active_slide()
+{
+
+    $query = query("SELECT * FROM slides ORDER BY slide_id DESC LIMIT 1");
+    confirm($query);
+
+    while ($row = fetch_array($query)) {
+
+        $slide_image = display_image($row['slide_image']);
+
+        $slide_active = <<<DELIMETER
+
+        <div class="item active">
+            <img style="height:400px;" class="slide-image" src="../resources/{$slide_image}" alt="">
+        </div>
+
+        DELIMETER;
+
+        echo $slide_active;
+    }
+}
+
+
+
+
+
+
+// function get_slide_thumbnails()
+// {
+
+//     $query = query("SELECT * FROM slides ORDER BY slide_id ASC");
+//     confirm($query);
+
+//     while ($row = fetch_array($query)) {
+
+//         $slide_image = display_image($row['slide_image']);
+
+//         $slide_thumbnail_admin = <<<DELIMETER
+
+//         <div class="col-xs-6 col-md-3">
+
+//         <a href =""> 
+//         <img style="height:400px;" class="img-responsive slide_image" src="../../resources/{$slide_image}" alt="">
+//         </a>
+
+//         </div>
+
+//         DELIMETER;
+
+//         echo $slide_thumbnail_admin;
+//     }
+// }
+
+
+
+
+function display_slide()
+{
+
+    $query = query("SELECT * FROM slides");
+    confirm($query);
+
+    while ($row = fetch_array($query)) {
+
+        $slide_id = $row['slide_id'];
+        $slide_title = $row['slide_title'];
+        $slide_image = $row['slide_image'];
+
+        $slide_image = display_image($row['slide_image']);
+
+        $slide_admin = <<<DELIMETER
+
+        <tr>
+        <td>{$slide_id}</td>
+        <td>{$slide_title}</td>
+        <td>
+        <a><img width="150" src="../../resources/{$slide_image}" alt=""></a>
+        </td>
+        <td>
+        <div class="col-xs-6 col-md-3 image_container">
+        <a class="btn btn-danger" href="../../resources/templates/back/delete_slide.php?id={$row['slide_id']}"><span class="glyphicon glyphicon-remove"></span></a>
+        </div>
+        </td>
+    </tr>
+
+DELIMETER;
+
+        echo $slide_admin;
     }
 }
