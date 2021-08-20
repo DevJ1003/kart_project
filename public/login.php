@@ -8,7 +8,7 @@ include "../resources/templates/front/header.php";
 <div class="container">
 
     <header>
-        <h1 class="text-center">LOGIN</h1>
+        <h1 class="text-center">LOGIN <span class="glyphicon glyphicon-user"></span></h1>
         <h4 class="text-center bg-warning"><?php display_message(); ?></h4>
         <div class="col-sm-4 col-sm-offset-5">
             <form class="" action="" method="post" enctype="multipart/form-data">
@@ -18,10 +18,10 @@ include "../resources/templates/front/header.php";
                 <hr>
 
                 <div class="form-group"><label for="">
-                        USERNAME<input type="text" name="username" class="form-control"></label>
+                        USERNAME <span class="glyphicon glyphicon-star"></span><input type="text" name="username" class="form-control"></label>
                 </div>
                 <div class="form-group"><label for="password">
-                        PASSWORD<input type="password" name="password" class="form-control"></label>
+                        PASSWORD <span class="glyphicon glyphicon-star"></span><input type="password" name="password" class="form-control"></label>
                 </div>
 
                 <div class="form-group">

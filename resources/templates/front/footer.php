@@ -6,7 +6,7 @@
     <footer>
         <div class="row">
             <div class="col-lg-12">
-                <p>Copyright &copy; Your Website 2030</p>
+                <p style="text-align: center;">Copyright &copy; 2021 Kart Project , DevJ.<br>A_KART Project !<br>&reg; All Rights Reserved !</p>
             </div>
         </div>
     </footer>
