@@ -10,7 +10,7 @@ include "../resources/templates/front/header.php";
 
     <!-- Jumbotron Header -->
     <header>
-        <h1>Shop!</h1>
+        <h1>Shop new available products...!!</h1>
     </header>
 
     <hr>

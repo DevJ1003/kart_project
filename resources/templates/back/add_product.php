@@ -9,7 +9,7 @@ include "../../resources/templates/back/header.php";
 <div id="page-wrapper">
 
     <h1 class="page-header">
-        Add Product
+        Add New Product...!!
     </h1>
 
     <form action="" method="post" enctype="multipart/form-data">
@@ -60,13 +60,6 @@ include "../../resources/templates/back/header.php";
                 <input type="text" name="product_price" class="form-control"></input>
             </div>
 
-
-            <!-- Product Tags -->
-            <!-- <div class="form-group">
-                <label for="product-title">Product Keywords</label>
-                <input type="text" name="product_tags" class="form-control">
-            </div> -->
-
             <!-- Product Image -->
             <div class="form-group">
                 <label for="product-title">Product Image</label>
@@ -74,7 +67,6 @@ include "../../resources/templates/back/header.php";
             </div>
 
             <div class="form-group">
-                <input type="submit" name="draft" class="btn btn-warning btn-lg" value="Draft">
                 <input type="submit" name="publish" class="btn btn-primary btn-lg" value="Publish">
             </div>
 

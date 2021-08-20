@@ -43,8 +43,7 @@ include "../resources/templates/front/header.php";
                     </div>
                     <div class="clearfix"></div>
                     <div class="col-lg-12 text-center">
-                        <div id="success"></div>
-                        <button name="submit" type="submit" class="btn btn-info">Send Message <span class="glyphicon glyphicon-star"></span></button>
+                        <button name="submit" type="submit" class="btn btn-info">Send Message <span class="glyphicon glyphicon-ok"></span></button>
                     </div>
                 </div>
             </form>

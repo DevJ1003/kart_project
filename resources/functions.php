@@ -160,7 +160,7 @@ function get_products()
     $limit = 'LIMIT ' . ($page - 1) * $perpage . ',' . $perpage;
 
 
-    $query2 = query("SELECT * FROM products $limit");
+    $query2 = query("SELECT * FROM products WHERE product_quantity >= 1 " . $limit);
     confirm($query2);
 
     $outputPagination = "";
@@ -204,9 +204,9 @@ DELIMETER;
 
     if ($lastpage != 1) {
 
-        echo "<div class='text-center'>Page $page of $lastpage !</div>";
+        echo "<div class='text-center' style='clear: both;' >Page $page of $lastpage !</div>";
     }
-    echo "<div class='text-center'><ul class='pagination'>{$outputPagination}</ul></div>";
+    echo "<div class='text-center' style='clear: both;' ><ul class='pagination'>{$outputPagination}</ul></div>";
 }
 
 
@@ -381,6 +381,13 @@ function send_message()
 /************************************ BACK END FUNCTIONS *************************************/
 
 
+function get_user_name()
+{
+    if (isset($_SESSION['username'])) {
+
+        return $_SESSION['username'];
+    }
+}
 
 
 function display_orders()
@@ -452,7 +459,10 @@ function get_products_in_admin()
     <td>{$category}</td>
     <td>{$row['product_price']}</td>
     <td>{$row['product_quantity']}</td>
-    <td><a class="btn btn-danger" href="../../resources/templates/back/delete_product.php?id={$row['product_id']}"><span class="glyphicon glyphicon-remove"></span></a></td>
+    <td>
+    <div class="col-xs-6 col-md-3 product_delete">
+    <a class="btn btn-danger" href="../../resources/templates/back/delete_product.php?id={$row['product_id']}"><span class="glyphicon glyphicon-remove"></span></a>
+    </td>
 </tr>
     
 DELIMETER;
@@ -500,8 +510,8 @@ function add_products()
         $product_image       = escape_string($_FILES['file']['name']);
         $image_temp_location = escape_string($_FILES['file']['tmp_name']);
 
-        move_uploaded_file($image_temp_location, UPLOAD_DIRECTORY . DS . $product_image);
 
+        move_uploaded_file($image_temp_location, UPLOAD_DIRECTORY . DS . $product_image);
 
         $query = query("INSERT INTO products( product_title , product_category_id , product_price , product_description , short_desc , product_quantity , product_image)
                 VALUES('{$product_title}' , '{$product_category_id}' , '{$product_price}' , '{$product_description}' , '{$short_desc}' , '{$product_quantity}' , '{$product_image}') ");

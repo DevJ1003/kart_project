@@ -13,7 +13,7 @@ include "../resources/templates/front/header.php";
     <div class="row">
 
         <h4 class="text-center bg-danger"><?php echo display_message(); ?></h4>
-        <h1>Checkout</h1>
+        <h1>Checkout...!!</h1>
 
         <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
             <input type="hidden" name="cmd" value="_cart">
@@ -48,7 +48,6 @@ include "../resources/templates/front/header.php";
             <h2>Cart Totals :</h2>
 
             <table class="table table-bordered" cellspacing="0">
-
                 <tr class="cart-subtotal">
                     <th>Items:</th>
                     <td><span class="amount"><?php

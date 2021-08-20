@@ -9,7 +9,7 @@ include "../../resources/templates/back/header.php";
 <div id="page-wrapper">
 
   <h1 class="page-header">
-    Home Page Slides
+    Home Page Slides...!!
   </h1>
   <h4 class="text-center bg-success"><?php display_message(); ?></h4>
 
@@ -44,7 +44,7 @@ include "../../resources/templates/back/header.php";
 
   <hr>
 
-  <h1>Slides Available</h1>
+  <h1>Slides Available :</h1>
 
   <table class="table table-hover">
     <thead>

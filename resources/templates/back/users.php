@@ -11,7 +11,7 @@ include "../../resources/templates/back/header.php";
 
         <div class="col-lg-12">
             <h1 class="page-header">
-                Users
+                All Users...!!
             </h1>
             <h4 class="text-center bg-success"><?php display_message(); ?></h4>
 

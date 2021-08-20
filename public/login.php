@@ -18,14 +18,14 @@ include "../resources/templates/front/header.php";
                 <hr>
 
                 <div class="form-group"><label for="">
-                        USERNAME <span class="glyphicon glyphicon-star"></span><input type="text" name="username" class="form-control"></label>
+                        USERNAME <span class="glyphicon glyphicon-lock"></span><input type="text" name="username" class="form-control"></label>
                 </div>
                 <div class="form-group"><label for="password">
-                        PASSWORD <span class="glyphicon glyphicon-star"></span><input type="password" name="password" class="form-control"></label>
+                        PASSWORD <span class="glyphicon glyphicon-eye-close"></span><input type="password" name="password" class="form-control"></label>
                 </div>
 
                 <div class="form-group">
-                    <input type="submit" name="submit" class="btn btn-primary">
+                    <button name="submit" type="submit" class="btn btn-info">Submit <span class="glyphicon glyphicon-log-in"></span></button>
                 </div>
             </form>
         </div>
