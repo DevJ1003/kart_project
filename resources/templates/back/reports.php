@@ -8,7 +8,7 @@ include "../../resources/templates/back/header.php";
 
 <div id="page-wrapper">
 
-    <h1 class="page-header">
+    <h1 class="page-header"><i class="fa fa-fw fa-line-chart"></i>
         Product Order Report...!!
     </h1>
     <h4 class="text-center bg-success"><?php display_message(); ?></h4>

@@ -7,25 +7,22 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="index.php">HOME</a>
+        <a class="navbar-brand" href="index.php"><span class="glyphicon glyphicon-home"></span> HOME</a>
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
             <li>
-                <a href="shop.php">Shop</a>
+                <a href="shop.php"><span class="glyphicon glyphicon-shopping-cart"></span> Shop</a>
             </li>
             <li>
-                <a href="login.php">Login</a>
+                <a href="checkout.php"><span class="glyphicon glyphicon-log-out"></span> Checkout</a>
             </li>
+
+            <?php show_login_admin_link(); ?>
+
             <li>
-                <a href="admin">Admin</a>
-            </li>
-            <li>
-                <a href="checkout.php">Checkout</a>
-            </li>
-            <li>
-                <a href="contact.php">Contact</a>
+                <a href="contact.php"><span class="glyphicon glyphicon-phone-alt"></span> Contact</a>
             </li>
 
         </ul>

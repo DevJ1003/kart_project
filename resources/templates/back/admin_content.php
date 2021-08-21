@@ -3,9 +3,8 @@
         <!-- Page Heading -->
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">
-                    Welcome to Dashboard , <small><?php echo strtoupper(get_user_name());
-                                                    ?></small>
+                <h1 class="page-header"><span class="glyphicon glyphicon-flag"></span>
+                    Welcome to kArt Dashboard , <small><?php echo strtoupper(get_user_name()); ?></small>
                 </h1>
             </div>
         </div>

@@ -8,7 +8,7 @@ include "../../resources/templates/back/header.php";
 
 <div id="page-wrapper">
 
-    <h1 class="page-header">
+    <h1 class="page-header"><i class="fa fa-fw fa-table"></i>
         Add New Product...!!
     </h1>
 
@@ -40,7 +40,7 @@ include "../../resources/templates/back/header.php";
             <!-- Product Categories-->
             <div class="form-group">
                 <label for="product-title">Product Category</label>
-                <select name="product_category" id="" class="form-control">
+                <select name="product_category_id" id="" class="form-control">
                     <option value="">Select Category</option>
                     <?php get_categories_add_product_page(); ?>
                 </select>
@@ -67,7 +67,7 @@ include "../../resources/templates/back/header.php";
             </div>
 
             <div class="form-group">
-                <input type="submit" name="publish" class="btn btn-primary btn-lg" value="Publish">
+                <button name="publish" type="submit" class="btn btn-primary">Add New Product <span class="glyphicon glyphicon-ok"></span></button>
             </div>
 
 

@@ -7,7 +7,7 @@ include "../../resources/templates/back/header.php";
 </div>
 
 <div id="page-wrapper">
-    <h1 class="page-header">
+    <h1 class="page-header"><i class="fa fa-fw fa-list"></i>
         Product Categories...!!
     </h1>
     <h4 class="text-center bg-success"><?php display_message(); ?></h4>
@@ -23,7 +23,7 @@ include "../../resources/templates/back/header.php";
             </div>
 
             <div class="form-group">
-                <input name="add_category" type="submit" class="btn btn-primary" value="Add Category">
+                <button name="add_category" type="submit" class="btn btn-primary">Add Category <span class="glyphicon glyphicon-ok"></span></button>
             </div>
 
         </form>

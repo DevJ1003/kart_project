@@ -13,7 +13,7 @@ include "../resources/templates/front/header.php";
     <div class="row">
 
         <h4 class="text-center bg-danger"><?php echo display_message(); ?></h4>
-        <h1>Checkout...!!</h1>
+        <h1><span class="glyphicon glyphicon-log-out" style="font-size: 80px"></span> Checkout...!!</h1>
 
         <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
             <input type="hidden" name="cmd" value="_cart">

@@ -54,7 +54,7 @@ include "../../resources/templates/back/header.php";
             </div>
 
             <div class="form-group">
-                <input type="submit" name="add_user" class="btn btn-primary pull-right" value="Add User">
+                <button name="add_user" type="submit" class="btn btn-primary">Add User <span class="glyphicon glyphicon-ok"></span></button>
             </div>
 
         </div>

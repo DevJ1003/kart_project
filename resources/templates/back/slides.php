@@ -8,7 +8,7 @@ include "../../resources/templates/back/header.php";
 
 <div id="page-wrapper">
 
-  <h1 class="page-header">
+  <h1 class="page-header"><i class="fa fa-fw fa-file"></i>
     Home Page Slides...!!
   </h1>
   <h4 class="text-center bg-success"><?php display_message(); ?></h4>
@@ -30,7 +30,7 @@ include "../../resources/templates/back/header.php";
         </div>
 
         <div class="form-group">
-          <input class="btn btn-primary" type="submit" name="add_slide" value="Submit">
+          <button name="add_slide" type="submit" class="btn btn-primary">Add New Slide <span class="glyphicon glyphicon-ok"></span></button>
         </div>
 
       </form>
@@ -44,7 +44,7 @@ include "../../resources/templates/back/header.php";
 
   <hr>
 
-  <h1>Slides Available :</h1>
+  <h1><span class="glyphicon glyphicon-picture"></span> Slides Available :</h1>
 
   <table class="table table-hover">
     <thead>

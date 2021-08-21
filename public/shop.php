@@ -10,7 +10,7 @@ include "../resources/templates/front/header.php";
 
     <!-- Jumbotron Header -->
     <header>
-        <h1>Shop new available products...!!</h1>
+        <h1><span class="glyphicon glyphicon-shopping-cart" style="font-size: 80px"></span> Shop new available products...!!</h1>
     </header>
 
     <hr>

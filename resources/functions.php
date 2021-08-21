@@ -193,7 +193,7 @@ function get_products()
                 <h4><a href="item.php?id={$row['product_id']}">{$row['product_title']}</a>
                 </h4>
                 <p>See more snippets like this online store item at <a target="_blank" href="http://www.bootsnipp.com">Bootsnipp - http://bootsnipp.com</a>.</p>
-                <a class="btn btn-primary" target="_blank" href="../resources/cart.php?add={$row['product_id']}">Add to Cart</a>
+                <a class="btn btn-primary" target="_blank" href="../resources/cart.php?add={$row['product_id']}">Add to Cart <span class="glyphicon glyphicon-shopping-cart"></span></a>
             </div>
         </div>
         </div>
@@ -262,7 +262,7 @@ function get_products_in_cat_page()
                     <h3>{$row['product_title']}</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
                     <p>
-                        <a href="../resources/cart.php?add={$row['product_id']}" class="btn btn-primary">Add to Cart</a> <a href="item.php?id={$row['product_id']}" class="btn btn-default">More !</a>
+                        <a href="../resources/cart.php?add={$row['product_id']}" class="btn btn-primary">Add to Cart <span class="glyphicon glyphicon-shopping-cart"></span></a> <a href="item.php?id={$row['product_id']}" class="btn btn-default">More<span class="glyphicon glyphicon-triangle-right"></span></a>
                     </p>
                 </div>
             </div>
@@ -299,7 +299,7 @@ function get_products_in_shop_page()
                     <h3>{$row['product_title']}</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
                     <p>
-                        <a href="../resources/cart.php?add={$row['product_id']}" class="btn btn-primary">Add to Cart</a> <a href="item.php?id={$row['product_id']}" class="btn btn-default">More !</a>
+                        <a href="../resources/cart.php?add={$row['product_id']}" class="btn btn-primary">Add to Cart <span class="glyphicon glyphicon-shopping-cart"></span></a> <a href="item.php?id={$row['product_id']}" class="btn btn-default">More<span class="glyphicon glyphicon-triangle-right"></span></a>
                     </p>
                 </div>
             </div>
@@ -311,6 +311,59 @@ DELIMETER;
     }
 }
 
+
+
+
+/******************************** HOMEPAGE LOGIN-ADMIN LINK FUCNTION ********************************/
+
+
+
+
+function IsLoggedIn()
+{
+    if (isset($_SESSION['username'])) {
+
+        return true;
+    } else {
+
+        return false;
+    }
+}
+
+
+function show_login_admin_link()
+{
+
+    if (IsLoggedIn()) {
+
+        $admin = <<<DELIMETER
+
+<li>
+    <a href="admin"><span class="glyphicon glyphicon-user"></span> Admin</a>
+</li>
+
+DELIMETER;
+
+        echo $admin;
+    } else {
+
+
+        $login = <<<DELIMETER
+
+<li>
+    <a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a>
+</li>
+
+DELIMETER;
+
+        echo $login;
+    }
+}
+
+
+
+
+/******************************** END OF HOMEPAGE LOGIN-ADMIN LINK FUCNTION ********************************/
 
 
 
@@ -521,6 +574,10 @@ function add_products()
         confirm($query);
         set_message("New Product with id {$last_id} was added!");
         redirect("index.php?products");
+
+
+        var_dump($product_category_id);
+        die();
     }
 }
 
@@ -908,35 +965,6 @@ function get_active_slide()
 }
 
 
-
-
-
-
-// function get_slide_thumbnails()
-// {
-
-//     $query = query("SELECT * FROM slides ORDER BY slide_id ASC");
-//     confirm($query);
-
-//     while ($row = fetch_array($query)) {
-
-//         $slide_image = display_image($row['slide_image']);
-
-//         $slide_thumbnail_admin = <<<DELIMETER
-
-//         <div class="col-xs-6 col-md-3">
-
-//         <a href =""> 
-//         <img style="height:400px;" class="img-responsive slide_image" src="../../resources/{$slide_image}" alt="">
-//         </a>
-
-//         </div>
-
-//         DELIMETER;
-
-//         echo $slide_thumbnail_admin;
-//     }
-// }
 
 
 

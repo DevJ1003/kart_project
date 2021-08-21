@@ -7,7 +7,6 @@ include "../resources/templates/front/header.php";
 
 <!-- Page Content -->
 <div class="container">
-
     <div class="row">
 
         <!-- Categories here -->
@@ -17,41 +16,25 @@ include "../resources/templates/front/header.php";
         <div class="col-md-9">
 
             <div class="row carousel-holder">
-
                 <div class="col-md-12">
 
                     <!-- Carouse -->
-
                     <?php include "../resources/templates/front/slider.php"; ?>
 
                 </div>
-
             </div>
 
             <div class="row">
-
-                <!-- <h1>
-
-                    <?php //echo $_SESSION['product_1']; 
-                    ?>
-
-                </h1> -->
 
                 <?php get_products(); ?>
 
             </div><!-- Rows ends here -->
 
         </div>
-
     </div>
-
 </div>
 
 </div>
 <!-- /.container -->
 
-<?php
-
-include "../resources/templates/front/footer.php";
-
-?>
+<?php include "../resources/templates/front/footer.php"; ?>
