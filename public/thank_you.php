@@ -2,14 +2,13 @@
 
 include "../resources/templates/front/header.php";
 
-// report();
-
 ?>
 
 <!-- Page Content -->
 <div class="container">
 
     <h1 class="text-center">Thank You for ordering !</h1>
+    <?php report(); ?>
 
 </div>
 <!--/.container-->

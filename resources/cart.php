@@ -203,7 +203,7 @@ function report()
             }
         }
 
-        session_destroy();
+        //session_destroy();
     } else {
 
         redirect("index.php");

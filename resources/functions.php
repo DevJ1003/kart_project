@@ -370,6 +370,49 @@ DELIMETER;
 
 
 
+
+
+
+
+
+
+/******************************************** DASHBOARD PAGE COUNT FUCNTIONS *********************************/
+
+
+
+function recordCount($table)
+{
+
+    global $connection;
+
+    $query = "SELECT * FROM " . $table;
+
+    $select_all_product = mysqli_query($connection, $query);
+
+    $result = 0;
+
+    $result = mysqli_num_rows($select_all_product);
+    confirm($result);
+
+
+    return $result;
+}
+
+
+
+
+
+
+
+
+/******************************************** END OF DASHBOARD PAGE COUNT FUCNTIONS *********************************/
+
+
+
+
+
+
+
 function login_user()
 {
 
@@ -1001,5 +1044,40 @@ function display_slide()
 DELIMETER;
 
         echo $slide_admin;
+    }
+}
+
+
+
+
+
+
+/********************************************** ADMIN ORDER TABLE FUCNTION ***********************************/
+
+
+
+
+
+function display_admin_orders()
+{
+
+    $query = query("SELECT * FROM orders");
+    confirm($query);
+
+    while ($row = fetch_array($query)) {
+
+        $orders = <<<DELIMETER
+
+<tr>
+    <td>{$row['order_id']}</td>
+    <td>{$row['order_amount']}</td>
+    <td>{$row['order_transaction']}</td>
+    <td>{$row['order_currency']}</td>
+    <td>{$row['order_status']}</td>
+</tr>
+
+DELIMETER;
+
+        echo $orders;
     }
 }
