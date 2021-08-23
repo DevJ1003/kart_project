@@ -101,7 +101,7 @@ if (isset($_GET['id'])) {
             </div>
 
             <div class="form-group">
-                <input type="submit" name="update" class="btn btn-primary btn-lg" value="Update">
+                <button name="update" type="submit" class="btn btn-primary">Update <span class="glyphicon glyphicon-ok"></span></button>
             </div>
 
 

@@ -10,8 +10,8 @@ include "../resources/templates/front/header.php";
 
     <!-- Jumbotron Header -->
     <header class="jumbotron hero-spacer">
-        <h1>A Warm Welcome!</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, ipsam, eligendi, in quo sunt possimus non incidunt odit vero aliquid similique quaerat nam nobis illo aspernatur vitae fugiat numquam repellat.</p>
+        <h1>Shop by Category !</h1>
+        <p>With kArt , you can shop accordingly to your needs and product categories available .</p>
         <p><a href="shop.php" class="btn btn-primary btn-large">Find More Products <span class="glyphicon glyphicon-zoom-in"></span></a>
         </p>
     </header>

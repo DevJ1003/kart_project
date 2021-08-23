@@ -192,7 +192,7 @@ function get_products()
                 <h4 class="pull-right">&#8377;{$row['product_price']}</h4>
                 <h4><a href="item.php?id={$row['product_id']}">{$row['product_title']}</a>
                 </h4>
-                <p>See more snippets like this online store item at <a target="_blank" href="http://www.bootsnipp.com">Bootsnipp - http://bootsnipp.com</a>.</p>
+                <p>{$row['short_desc']}</p>
                 <a class="btn btn-primary" target="_blank" href="../resources/cart.php?add={$row['product_id']}">Add to Cart <span class="glyphicon glyphicon-shopping-cart"></span></a>
             </div>
         </div>
@@ -260,7 +260,7 @@ function get_products_in_cat_page()
             <a href="item.php?id={$row['product_id']}"><img style="height:120px;" src="../resources/{$product_image}" alt=""></a>
                 <div class="caption">
                     <h3>{$row['product_title']}</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                    <p>{$row['short_desc']}</p>
                     <p>
                         <a href="../resources/cart.php?add={$row['product_id']}" class="btn btn-primary">Add to Cart <span class="glyphicon glyphicon-shopping-cart"></span></a> <a href="item.php?id={$row['product_id']}" class="btn btn-default">More<span class="glyphicon glyphicon-triangle-right"></span></a>
                     </p>
@@ -297,7 +297,7 @@ function get_products_in_shop_page()
             <a href="item.php?id={$row['product_id']}"><img style="height:120px;" src="../resources/{$product_image}" alt=""></a>
                 <div class="caption">
                     <h3>{$row['product_title']}</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                    <p>{$row['short_desc']}</p>
                     <p>
                         <a href="../resources/cart.php?add={$row['product_id']}" class="btn btn-primary">Add to Cart <span class="glyphicon glyphicon-shopping-cart"></span></a> <a href="item.php?id={$row['product_id']}" class="btn btn-default">More<span class="glyphicon glyphicon-triangle-right"></span></a>
                     </p>
@@ -548,11 +548,15 @@ function get_products_in_admin()
 <tr>
     <td>{$row['product_id']}</td>
     <td>{$row['product_title']}<br>
-    <a href="index.php?edit_product&id={$row['product_id']}"><img width="150" src="../../resources/{$product_image}" alt=""></a>
+    <img width="150" src="../../resources/{$product_image}" alt=""></a>
     </td>
     <td>{$category}</td>
     <td>{$row['product_price']}</td>
     <td>{$row['product_quantity']}</td>
+    <td>
+    <div class="col-xs-6 col-md-3 product_edit">
+    <a class="btn btn-success" href="index.php?edit_product&id={$row['product_id']}"><span class="glyphicon glyphicon-edit"></span></a>
+    </td>
     <td>
     <div class="col-xs-6 col-md-3 product_delete">
     <a class="btn btn-danger" href="../../resources/templates/back/delete_product.php?id={$row['product_id']}"><span class="glyphicon glyphicon-remove"></span></a>
