@@ -2,6 +2,19 @@
 
 include "../resources/templates/front/header.php";
 
+
+
+if (isset($_POST['submit'])) {
+
+    $to         = "kartproject2002@gmail.com";
+    $subject    = wordwrap($_POST['subject'], 70);
+    $body       = $_POST['message'];
+    $from       = $_POST['email'];
+    $header     = "From: " . $from;
+    mail($to, $from, "$subject", $body, $header);
+}
+
+
 ?>
 
 
@@ -23,7 +36,7 @@ include "../resources/templates/front/header.php";
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <input name="name" type="text" class="form-control" placeholder="Enter your name" id="name" required data-validation-required-message="Please enter your name.">
+                            <input name="email" type="text" class="form-control" placeholder="Enter your name" id="name" required data-validation-required-message="Please enter your name.">
                             <p class="help-block text-danger"></p>
                         </div>
                         <div class="form-group">
@@ -54,8 +67,4 @@ include "../resources/templates/front/header.php";
 </div>
 <!-- /.container -->
 
-<?php
-
-include "../resources/templates/front/footer.php";
-
-?>
+<?php include "../resources/templates/front/footer.php"; ?>

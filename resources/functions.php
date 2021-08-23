@@ -446,15 +446,13 @@ function send_message()
 
     if (isset($_POST['submit'])) {
 
-        $to        = "someexample@gmail.com";
-        $from_name = $_POST['name'];
-        $email     = $_POST['email'];
-        $subject   = $_POST['subject'];
-        $message   = $_POST['message'];
+        $to         = "kartproject2002@gmail.com";
+        $subject    = wordwrap($_POST['subject'], 70);
+        $body       = $_POST['message'];
+        $from       = $_POST['email'];
+        $header     = "From: " . $from;
 
-        $headers = "From: {$from_name} {$email} ";
-
-        $result = mail($to, $subject, $message, $headers);
+        $result = mail($to, $from, "$subject", $body, $header);
 
         if (!$result) {
 
@@ -462,7 +460,7 @@ function send_message()
             redirect("contact.php");
         } else {
 
-            set_message("Yes , your message has been sent !");
+            set_message("Your message has been sent !");
             redirect("contact.php");
         }
     }
