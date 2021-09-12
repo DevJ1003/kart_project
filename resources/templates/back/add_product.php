@@ -17,17 +17,17 @@ include "../../resources/templates/back/header.php";
         <div class="col-md-8">
             <div class="form-group">
                 <label for="product-title">Product Title </label>
-                <input type="text" name="product_title" class="form-control">
+                <input type="text" name="product_title" class="form-control" required data-validation-required-message="Please Enter">
             </div>
 
             <div class="form-group">
                 <label for="product-title">Product Description</label>
-                <textarea name="product_description" id="" cols="30" rows="10" class="form-control"></textarea>
+                <textarea name="product_description" id="" cols="30" rows="10" class="form-control" required data-validation-required-message="Please Enter"></textarea>
             </div>
 
             <div class="form-group">
                 <label for="product-title">Product Short Description</label>
-                <textarea name="short_desc" id="" cols="30" rows="3" class="form-control"></textarea>
+                <textarea name="short_desc" id="" cols="30" rows="3" class="form-control" required data-validation-required-message="Please Enter"></textarea>
             </div>
 
         </div>
@@ -40,7 +40,7 @@ include "../../resources/templates/back/header.php";
             <!-- Product Categories-->
             <div class="form-group">
                 <label for="product-title">Product Category</label>
-                <select name="product_category_id" id="" class="form-control">
+                <select name="product_category_id" id="" class="form-control" required data-validation-required-message="Please Select">
                     <option value="">Select Category</option>
                     <?php get_categories_add_product_page(); ?>
                 </select>
@@ -50,14 +50,14 @@ include "../../resources/templates/back/header.php";
             <!-- Product Brands-->
             <div class="form-group">
                 <label for="product-title">Product Quantity</label>
-                <input type="number" name="product_quantity" class="form-control"></input>
+                <input type="number" name="product_quantity" class="form-control" required data-validation-required-message="Please Enter"></input>
             </div>
 
 
             <!-- Product Price-->
             <div class="form-group">
                 <label for="product-title">Product Price</label>
-                <input type="text" name="product_price" class="form-control"></input>
+                <input type="text" name="product_price" class="form-control" required data-validation-required-message="Please Enter"></input>
             </div>
 
             <!-- Product Image -->

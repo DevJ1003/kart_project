@@ -9,21 +9,16 @@ include "../resources/templates/front/header.php";
 <div class="container">
 
     <!-- Side Navigation -->
-
     <?php include "../resources/templates/front/side_nav.php";
-
 
     $query = query("SELECT * FROM products WHERE product_id = " . escape_string($_GET['id']) . "");
     confirm($query);
-
-
     while ($row = fetch_array($query)) :
 
     ?>
 
 
         <div class="col-md-9">
-
             <!--Row For Image and Short Description-->
             <div class="row">
 

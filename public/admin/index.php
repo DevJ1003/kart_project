@@ -2,20 +2,15 @@
 
 include "../../resources/templates/back/header.php";
 
-
 if (!isset($_SESSION['username'])) {
-
     redirect("../../public");
 }
-
 
 ?>
 
 
 <div id="page-wrapper">
-
     <div class="container-fluid">
-
 
         <?php
 

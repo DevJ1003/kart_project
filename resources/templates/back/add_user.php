@@ -30,27 +30,27 @@ include "../../resources/templates/back/header.php";
 
             <div class="form-group">
                 <label for="username">Username</label>
-                <input type="text" name="username" class="form-control">
+                <input type="text" name="username" class="form-control" required data-validation-required-message="Please Enter">
             </div>
 
             <div class="form-group">
                 <label for="firstname">FirstName</label>
-                <input type="text" name="firstname" class="form-control">
+                <input type="text" name="firstname" class="form-control" required data-validation-required-message="Please Enter">
             </div>
 
             <div class="form-group">
                 <label for="lastname">LastName</label>
-                <input type="text" name="lastname" class="form-control">
+                <input type="text" name="lastname" class="form-control" required data-validation-required-message="Please Enter">
             </div>
 
             <div class="form-group">
                 <label for="email">Email</label>
-                <input type="text" name="email" class="form-control">
+                <input type="text" name="email" class="form-control" required data-validation-required-message="Please Enter Your Email">
             </div>
 
             <div class="form-group">
                 <label for="password">Password</label>
-                <input type="password" name="password" class="form-control">
+                <input type="password" name="password" class="form-control" required data-validation-required-message="Please Enter">
             </div>
 
             <div class="form-group">

@@ -1,17 +1,11 @@
-<?php
-
-$order_count = recordCount('orders');
-$product_count = recordCount('products');
-$category_count = recordCount('categories');
-
-?>
+<?php require_once("../../resources/config.php"); ?>
 
 <!-- FIRST ROW WITH PANELS -->
 <!-- Page Heading -->
 <div class="row">
     <div class="col-lg-12">
         <h1 class="page-header"><span class="glyphicon glyphicon-flag"></span>
-            Welcome to kArt Dashboard , <small><?php echo strtoupper(get_user_name()); ?></small>
+            Welcome to kArt dashboard , <small><?php echo get_user_name(); ?></small>
         </h1>
     </div>
 </div>
@@ -27,7 +21,7 @@ $category_count = recordCount('categories');
                         <span class="glyphicon glyphicon-align-left" style="font-size: 60px;"></span>
                     </div>
                     <div class="col-xs-9 text-right">
-                        <div class="huge"><?php echo $order_count; ?></div>
+                        <div class="huge"><?php countOrder(); ?></div>
                         <div>Total Orders !</div>
                     </div>
                 </div>
@@ -51,7 +45,7 @@ $category_count = recordCount('categories');
                         <i class="fa fa-fw fa-bar-chart-o" style="font-size: 60px;"></i>
                     </div>
                     <div class="col-xs-9 text-right">
-                        <div class="huge"><?php echo $product_count; ?></div>
+                        <div class="huge"><?php countProduct(); ?></div>
                         <div>Products!</div>
                     </div>
                 </div>
@@ -74,7 +68,7 @@ $category_count = recordCount('categories');
                         <i class="fa fa-fw fa-list" style="font-size: 60px;"></i>
                     </div>
                     <div class="col-xs-9 text-right">
-                        <div class="huge"><?php echo $category_count; ?></div>
+                        <div class="huge"><?php countCategory(); ?></div>
                         <div>Categories!</div>
                     </div>
                 </div>
@@ -109,7 +103,8 @@ $category_count = recordCount('categories');
                 </tr>
             </thead>
             <tbody>
-                <?php display_admin_orders(); ?>
+                <?php //display_admin_orders(); 
+                ?>
             </tbody>
         </table>
     </div>

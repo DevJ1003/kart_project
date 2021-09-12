@@ -2,7 +2,6 @@
 
 include "header.php";
 
-
 if (isset($_GET['id'])) {
 
     $query = query("SELECT * FROM products WHERE product_id =" . escape_string($_GET['id']));
@@ -20,16 +19,12 @@ if (isset($_GET['id'])) {
         $product_image = display_image($row['product_image']);
     }
 
-    // var_dump($_POST);
-    // die();
     update_products();
 }
-
 
 ?>
 
 </div>
-
 <div id="page-wrapper">
 
     <h1 class="page-header">
@@ -37,7 +32,6 @@ if (isset($_GET['id'])) {
     </h1>
 
     <form action="" method="post" enctype="multipart/form-data">
-
         <div class="col-md-8">
             <div class="form-group">
                 <label for="product-title">Product Title </label>
@@ -86,13 +80,6 @@ if (isset($_GET['id'])) {
                 <input type="text" name="product_price" class="form-control" value="<?php echo $product_price; ?>"></input>
             </div>
 
-
-            <!-- Product Tags -->
-            <!-- <div class="form-group">
-                <label for="product-title">Product Keywords</label>
-                <input type="text" name="product_tags" class="form-control">
-            </div> -->
-
             <!-- Product Image -->
             <div class="form-group">
                 <label for="product-title">Product Image</label>
@@ -107,7 +94,6 @@ if (isset($_GET['id'])) {
 
         </aside>
         <!--SIDEBAR-->
-
     </form>
 
 </div>

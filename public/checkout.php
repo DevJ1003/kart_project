@@ -42,7 +42,7 @@ include "../resources/templates/front/header.php";
 
 
 
-        <!--  ***********CART TOTALS*************-->
+        <!-- CART TOTALS -->
 
         <div class="col-xs-4 pull-right ">
             <h2>Cart Totals :</h2>
@@ -50,32 +50,23 @@ include "../resources/templates/front/header.php";
             <table class="table table-bordered" cellspacing="0">
                 <tr class="cart-subtotal">
                     <th>Items:</th>
-                    <td><span class="amount"><?php
-                                                echo isset($_SESSION['item_quantity']) ? $_SESSION['item_quantity'] : $_SESSION['item_quantity'] = "0";
-                                                ?></span></td>
+                    <td><span class="amount"><?php echo isset($_SESSION['item_quantity']) ? $_SESSION['item_quantity'] : $_SESSION['item_quantity'] = "0"; ?></span>
+                    </td>
                 </tr>
                 <tr class="shipping">
                     <th>Shipping and Handling :</th>
                     <td>Free Shipping</td>
                 </tr>
-
                 <tr class="order-total">
                     <th>Order Total :</th>
-                    <td><strong><span class="amount">&#8377;<?php
-                                                            echo isset($_SESSION['item_total']) ? $_SESSION['item_total'] : $_SESSION['item_total'] = "0";
-                                                            ?>
-
-                            </span></strong> </td>
+                    <td><strong><span class="amount">&#8377;<?php echo isset($_SESSION['item_total']) ? $_SESSION['item_total'] : $_SESSION['item_total'] = "0"; ?></span></strong>
+                    </td>
                 </tr>
 
 
                 </tbody>
-
             </table>
-
         </div><!-- CART TOTALS-->
-
-
     </div>
     <!--Main Content-->
 

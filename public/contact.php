@@ -3,7 +3,6 @@
 include "../resources/templates/front/header.php";
 
 
-
 if (isset($_POST['submit'])) {
 
     $to         = "kartproject2002@gmail.com";
@@ -19,7 +18,6 @@ if (isset($_POST['submit'])) {
 
 
 <!-- Contact Section -->
-
 <div class="container">
     <div class="row">
         <div class="col-lg-12 text-center">

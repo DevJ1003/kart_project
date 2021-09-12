@@ -60,7 +60,6 @@ function cart()
 
     $total = 0;
     $item_quantity = 0;
-    // $ship_total = 50;
     $item_name = 1;
     $item_number = 1;
     $amount = 1;
@@ -84,7 +83,6 @@ function cart()
 
                     $sub = $row['product_price'] * $value;
                     $item_quantity += $value;
-                    // $ship_total += $total;
 
                     $product_image = display_image($row['product_image']);
                     $product = <<<DELIMETER
@@ -122,7 +120,6 @@ function cart()
 
                 $_SESSION['item_total'] = $total += $sub;
                 $_SESSION['item_quantity'] = $item_quantity;
-                // $_SESSION['ship_total'] = $total += $ship_total;
             }
         }
     }
@@ -202,31 +199,8 @@ function report()
                 }
             }
         }
-
-        //session_destroy();
     } else {
 
         redirect("index.php");
     }
 }
-
-
-
-
-
-
-
-    
-
-
-// function shipping($value)
-// {
-
-//     if ($value < 100) {
-
-//         echo "&#8377 50 will be charged extra for shipping!";
-//     } else {
-
-//         echo "Free Shipping!";
-//     }
-// }

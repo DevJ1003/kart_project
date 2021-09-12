@@ -351,6 +351,9 @@ DELIMETER;
         $login = <<<DELIMETER
 
 <li>
+    <a href="registration.php"><span class="glyphicon glyphicon-user"></span> Registration</a>
+    </li>
+<li>
     <a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a>
 </li>
 
@@ -380,23 +383,63 @@ DELIMETER;
 
 
 
-function recordCount($table)
+
+
+
+
+
+function countProduct()
 {
 
-    global $connection;
+    $query = query("SELECT product_id FROM products");
+    confirm($query);
 
-    $query = "SELECT * FROM " . $table;
+    $product_count = mysqli_num_rows($query);
 
-    $select_all_product = mysqli_query($connection, $query);
-
-    $result = 0;
-
-    $result = mysqli_num_rows($select_all_product);
-    confirm($result);
-
-
-    return $result;
+    echo $product_count;
 }
+
+
+
+
+
+
+
+
+function countOrder()
+{
+
+    $query = query("SELECT order_id FROM orders");
+    confirm($query);
+
+    $order_count = mysqli_num_rows($query);
+
+    echo $order_count;
+}
+
+
+
+
+
+
+
+
+
+
+function countCategory()
+{
+
+    $query = query("SELECT cat_id FROM categories");
+    confirm($query);
+
+    $cat_count = mysqli_num_rows($query);
+
+    echo $cat_count;
+}
+
+
+
+
 
 
 
@@ -416,25 +459,79 @@ function recordCount($table)
 function login_user()
 {
 
+    global $connection;
+
     if (isset($_POST['submit'])) {
 
-        $username = escape_string($_POST['username']);
-        $password = escape_string($_POST['password']);
+        $username = trim($_POST['username']);
+        $password = trim($_POST['password']);
 
-        $query = query("SELECT * FROM users WHERE username = '{$username}' AND password = '{$password}' ");
+        $username = mysqli_escape_string($connection, $username);
+        $password = mysqli_escape_string($connection, $password);
+
+        $query = query("SELECT * FROM users WHERE username = '{$username}' ");
         confirm($query);
 
 
-        if (mysqli_num_rows($query) == 0) {
+        while ($row = fetch_array($query)) {
 
-            set_message("Your Username or Password is wrong !");
-            redirect("login.php");
-        } else {
-            $_SESSION['username'] = $username;
-            redirect("admin");
+            $user_password = $row['password'];
+
+            if (password_verify($password, $user_password)) {
+
+                if (mysqli_num_rows($query) == 0) {
+
+                    set_message("Your Username or Password is wrong !");
+                    redirect("login.php");
+                } elseif (password_verify($password, $user_password)) {
+
+                    $_SESSION['username'] = $username;
+                    redirect("admin/index.php");
+                }
+            }
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+function register_user()
+{
+
+    if (isset($_POST['register'])) {
+
+        $username   = $_POST['username'];
+        $firstname  = $_POST['firstname'];
+        $lastname   = $_POST['lastname'];
+        $email      = $_POST['email'];
+
+        $password   = $_POST['password'];
+        $hashed_password = password_hash($password, PASSWORD_BCRYPT, array('cost' => 10));
+
+
+        $query = "INSERT INTO users(username, firstname , lastname , email , password) VALUES('{$username}'  , '{$firstname}' , '{$lastname}' , '{$email}', '{$hashed_password}' ) ";
+        $query = query($query);
+        confirm($query);
+
+        redirect("login.php");
+        set_message("User Registered !!");
+    }
+}
+
+
+
+
+
+
 
 
 
@@ -640,20 +737,10 @@ function get_categories_add_product_page()
 
 
     while ($row = fetch_array($query)) {
-        // if ($row['cat_id'] == $product_category_id) {
-        //     <option value="{$row['cat_id']}" selected>{$row['cat_title']}</option>   
-
-        // }else{
-        //     <option value="{$row['cat_id']}">{$row['cat_title']}</option>   
-
-        // }
         $categories_options = <<<DELIMETER
 
-            
-            <option value="{$row['cat_id']}">{$row['cat_title']}</option>   
-
+        <option value="{$row['cat_id']}">{$row['cat_title']}</option>   
         DELIMETER;
-
         echo $categories_options;
     }
 }
@@ -795,11 +882,11 @@ function display_user()
 
     while ($row = fetch_array($query)) {
 
-        $user_id = $row['user_id'];
-        $username = $row['username'];
-        $firstname = $row['firstname'];
-        $lastname = $row['lastname'];
-        $email = $row['email'];
+        $user_id    = $row['user_id'];
+        $username   = $row['username'];
+        $firstname  = $row['firstname'];
+        $lastname   = $row['lastname'];
+        $email      = $row['email'];
 
         $user_image = display_image($row['user_image']);
 
