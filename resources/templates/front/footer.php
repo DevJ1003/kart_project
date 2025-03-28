@@ -6,7 +6,7 @@
     <footer>
         <div class="row">
             <div class="col-lg-12">
-                <p style="text-align: center;">Copyright &copy; 2021 kArt Project , DevJ.<br><span class="glyphicon glyphicon-shopping-cart"></span> kArt Project !<br>&reg; All Rights Reserved !</p>
+                <p style="text-align: center;">Copyright &copy; 2021 kart Project , DevJ.<br><span class="glyphicon glyphicon-shopping-cart"></span> kart Project !<br>&reg; All Rights Reserved !</p>
             </div>
         </div>
     </footer>

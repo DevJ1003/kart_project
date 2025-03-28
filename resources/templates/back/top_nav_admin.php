@@ -5,7 +5,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="/Kart/public/index.php"><i class="fa fa-fw fa-home"></i>kArt</a>
+    <a class="navbar-brand" href="/Kart/public/index.php"><i class="fa fa-fw fa-home"></i>kart</a>
 </div>
 
 <ul class="nav navbar-right top-nav">

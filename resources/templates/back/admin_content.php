@@ -5,7 +5,7 @@
 <div class="row">
     <div class="col-lg-12">
         <h1 class="page-header"><span class="glyphicon glyphicon-flag"></span>
-            Welcome to kArt dashboard , <small><?php echo get_user_name(); ?></small>
+            Welcome to kart dashboard , <small><?php echo get_user_name(); ?></small>
         </h1>
     </div>
 </div>
